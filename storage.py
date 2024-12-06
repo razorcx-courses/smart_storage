@@ -1,7 +1,6 @@
 import streamlit as st
 import pandas as pd
 from sidebar.sidebar import create_sidebar
-from dialogs.rental import create_new_rental
 from components.unit_status import get_unit_status
 from components.financial_overview import get_financial_overview
 from components.income_potential import get_income_potential
@@ -18,7 +17,7 @@ from components.revenue_analysis import get_revenue_analysis
 from components.monthly_income import get_monthly_income
 from components.unit_distribution import get_unit_distribution
 # from components.site_map_plan import get_site_map_plan
-
+import dialogs.new_rental_dialog as new_rental_dialog
 from components.collapse import collapse
 
 st.set_page_config(page_title="Storage Facility Dashboard", layout="wide")
@@ -39,19 +38,9 @@ df = st.session_state.units_list
 st.session_state.unit_specs = pd.read_csv("./data/unit-specs.csv")
 data = st.session_state.unit_specs
 
-# --- Test Components ---
-# collapse()
-
-# --- WIP ----
-# Main app code
-# if "rental_data" not in st.session_state:
-#     if st.button("New Rental Agreement"):
-#         create_new_rental()
-# else:
-#     # Process the rental data
-#     rental_data = st.session_state.rental_data
-# --- WIP ----
-
+if st.button("New Rental Agreement"):
+    new_rental_dialog.show()
+    
 # Create DataFrame for unit rates
 rates_df = pd.DataFrame(data)
     
