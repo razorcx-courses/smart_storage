@@ -20,7 +20,9 @@ from components.unit_distribution import get_unit_distribution
 import dialogs.new_rental_dialog as new_rental_dialog
 from components.collapse import collapse
 
-st.set_page_config(page_title="Storage Facility Dashboard", layout="wide")
+# --- Homepage ---
+import views.homepage as homepage
+homepage.run()
 
 if "uploaded_file" not in st.session_state:
     st.session_state.uploaded_file = None
