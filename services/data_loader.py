@@ -15,7 +15,6 @@ def load_data(uploaded_file):
             
             return df
         else:
-            st.sidebar.warning("Please upload a CSV file")
             return pd.DataFrame()
     except Exception as e:
         st.error(f"Error loading data: {str(e)}")
